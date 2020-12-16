@@ -62,7 +62,8 @@ function lin() {
 }
 
 linStart.addEventListener('click', ev => {
-    ev.preventDefault()
-    greenBar.style.width = 0 + '%'
-    lin()
-})
+        ev.preventDefault()
+        greenBar.style.width = 0 + '%'
+        lin()
+    }
+)
