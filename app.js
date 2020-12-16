@@ -3,6 +3,8 @@ import MathUtils from "./utils/MathUtils";
 let linStart = document.getElementById('linStart')
 let greenBar = document.querySelector('.green__done')
 
+const maxLengthOfBuffer = 4;
+
 function lin() {
     let minimumAdmissionTime = +document.getElementById('Tzmin').value / 1000
     minimumAdmissionTime = +minimumAdmissionTime.toFixed(2)
@@ -31,12 +33,12 @@ function lin() {
 
         console.log(programProcessingTime)
 
-        if (buffer.length > 0 && buffer.length <= 3) {
+        if (buffer.length > 0 && buffer.length <= maxLengthOfBuffer) {
             if (server_1 <= 0) {
                 server_1 = buffer[0]
                 buffer.shift()
             } else {
-                if (buffer.length < 3) {
+                if (buffer.length < maxLengthOfBuffer) {
                     buffer.push(programProcessingTime)
                 } else {
                     console.log("program was rejected")
