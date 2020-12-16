@@ -2,7 +2,7 @@ let linStart = document.getElementById('linStart')
 let greenBar = document.querySelector('.green__done')
 
 function fac(n) {
-    return (n != 1) ? n * fac(n - 1) : 1;
+    return (n !== 1) ? n * fac(n - 1) : 1;
 }
 
 function getRandomNumberFromZeroToOne() {
