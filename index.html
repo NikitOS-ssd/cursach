@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<link rel="stylesheet" href="style.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>React App</title>
+</head>
+
+<body>
+	<noscript>You need to enable JavaScript to run this app.</noscript>
+	<div class="done">Выполнено
+		<div class="red__done">
+			<div class="green__done"></div>
+		</div>
+	</div>
+	<div class="btn-menu">
+		<button class="show" id="hide">Скрыть меню</button>
+		<button class="hide" id="show">Показать меню</button>
+		<button id="help">Помощь</button>
+	</div>
+
+	<div class="help--menu hide" id="helpMenu">
+		<div class="help--menu__inner">
+			<p>lol</p>
+			<p>lol</p>
+			<p>lol</p>
+			<p>lol</p>
+		</div>
+	</div>
+
+	<div class="wrapper">
+		<div class="menu__item">
+			<form class="menu" id="menuLin">
+				<label for="Tzmin">Tzmin в ms</label>
+				<input type="text" id="Tzmin" value="500" required>
+				<label for="Tzmax">Tzmax в ms</label>
+				<input type="text" id="Tzmax" value="833" required>
+				<label for="Tsmin">Tsmin в ms</label>
+				<input type="text" id="Tsmin" value="1000" required>
+				<label for="Tsmax">Tsmax в ms</label>
+				<input type="text" id="Tsmax" value="5000" required>
+				<label for="Tall">Время программы в ms</label>
+				<input type="text" id="Tall" value="3600000" required>
+				<input type="submit" id="linStart" value="Начать">
+			</form>
+			<div id="rootLin"></div>
+		</div>
+
+		<div class="menu__item">
+			<form class="menu" id="menuExp">
+				<label for="Tpost">Время прибытия в ms</label>
+				<input type="text" id="Tpost" required>
+				<label for="Tpost">Время выполнения в ms</label>
+				<input type="text" id="Tdone" required>
+				<!-- <label for="Tpost">Время программы в ms</label>
+			<input type="text" id="T" required> -->
+				<input type="submit" id="expStart" value="Начать">
+			</form>
+			<div id="rootExp"></div>
+		</div>
+	</div>
+	<script src="app.js"></script>
+	<script src="int.js"></script>
+</body>
+
+</html>
