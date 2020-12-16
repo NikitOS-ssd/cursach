@@ -1,4 +1,4 @@
-import MathUtils from "./utils/MathUtils";
+import {MathUtils} from './utils/MathUtils.js'
 
 let linStart = document.getElementById('linStart')
 let greenBar = document.querySelector('.green__done')
