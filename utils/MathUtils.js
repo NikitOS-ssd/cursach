@@ -2,6 +2,7 @@ class MathUtils {
 
     /**
      * @throws {FactorialError}
+     * @return {number}
      */
     static factorial(number) {
         if (number % 1 !== 0) throw new FactorialError("number is not integer")
@@ -10,14 +11,14 @@ class MathUtils {
     }
 
     /**
-     * @return number that  `>= 0` and `<= 1`
+     * @return {number} number that  `>= 0` and `<= 1`
      */
     static getRandomNumberFromZeroToOne() {
         return parseFloat(Math.random().toFixed(2))
     }
 
     /**
-     * @return random number that   `>= startBarrier` and `<= endBarrier`
+     * @return {number} random number that   `>= startBarrier` and `<= endBarrier`
      */
     static generateRandomNumberBetween(startBarrier, endBarrier) {
         let programProcessingTime = (startBarrier - endBarrier) * MathUtils.getRandomNumberFromZeroToOne() + endBarrier
@@ -28,17 +29,52 @@ class MathUtils {
     /**
      * @return {number} mean count of requests in integer
      */
-    static calculateMeanRequestsInHour(minAdmissionTimeSec, maxAdmissionTimeSec, hours) {
+    static calculateMeanAdmissionRequestsInHour(minTimeSec, maxTimeSec, hours) {
 
-        if (minAdmissionTimeSec > maxAdmissionTimeSec || hours === 0) throw new CalculateMeanRequestHourError
+        if (minTimeSec > maxTimeSec || hours === 0) throw new CalculateMeanRequestHourError
 
-        const meanTimeInSec = (minAdmissionTimeSec + maxAdmissionTimeSec) / 2
+        const meanTimeInSec = (minTimeSec + maxTimeSec) / 2
         const meanTimeInHours = this.secondsToHours(meanTimeInSec)
         return Math.floor(hours / meanTimeInHours)
     }
 
+    /**
+     * @return {number} mean frequency processing
+     */
+    static calculateFrequencyRequestsProcessingInHour(minTimeSec, maxTimeSec, hours) {
+
+        if (minTimeSec > maxTimeSec || hours === 0) throw new CalculateMeanRequestHourError
+
+        const meanTimeInSec = (minTimeSec + maxTimeSec) / 2
+        const meanTimeInMinutes = this.secondsToMinutes(meanTimeInSec)
+
+        return this.toFixedFiveDigitsAfterComma(meanTimeInMinutes / 60 * hours)
+    }
+
+    /**
+     * @return {number} service flow rate
+     */
+    static serviceFlowRate(admissionRequestsInHour, frequencyRequestsProcessingInHour) {
+        return admissionRequestsInHour * frequencyRequestsProcessingInHour
+    }
+
+    /**
+     * @return {number} probability from 0 to 1
+     */
+    static probabilityThatChannelIsFree(serviceFlowRate) {
+        //TODO implement function
+    }
+
     static secondsToHours(seconds) {
-        return parseFloat((seconds / 3600).toFixed(5))
+        return this.toFixedFiveDigitsAfterComma(seconds / 3600)
+    }
+
+    static secondsToMinutes(seconds) {
+        return this.toFixedFiveDigitsAfterComma(seconds / 60)
+    }
+
+    static toFixedFiveDigitsAfterComma(number) {
+        return parseFloat(parseFloat(number).toFixed(5))
     }
 }
 
