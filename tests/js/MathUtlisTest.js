@@ -162,4 +162,10 @@ describe('MathUtils', function () {
             assert.strictEqual(MathUtils.probabilityOfReject(2.96393, 1, 0.25227), 0.74771)
         })
     })
+
+    describe('countOfProcessedRequests(minTimeSec, maxTimeSec, hours)', function () {
+        it('should return 1200 when passed minTimeSec=1, maxTimeSec=5, hours=1', function () {
+            assert.strictEqual(MathUtils.countOfProcessedRequests(1, 5, 1), 1200)
+        })
+    })
 })

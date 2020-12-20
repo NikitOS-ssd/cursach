@@ -80,6 +80,15 @@ class MathUtils {
         return this.toFixedFiveDigitsAfterComma(result)
     }
 
+    /**
+     * @return {number} integer of count of processed request
+     */
+    static countOfProcessedRequests(minTimeSec, maxTimeSec, hours) {
+        const frequencyRequestsProcessingInHour = (minTimeSec + maxTimeSec) / 2;
+        const result = 3600 / frequencyRequestsProcessingInHour
+        return parseInt(result)
+    }
+
     static secondsToHours(seconds) {
         return this.toFixedFiveDigitsAfterComma(seconds / 3600)
     }
