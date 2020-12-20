@@ -58,6 +58,13 @@ class MathUtils {
         return admissionRequestsInHour * frequencyRequestsProcessingInHour
     }
 
+    /**
+     * @return {number} probability from 0 to 1
+     */
+    static probabilityThatChannelIsFree(serviceFlowRate) {
+        //TODO implement function
+    }
+
     static secondsToHours(seconds) {
         return this.toFixedFiveDigitsAfterComma(seconds / 3600)
     }

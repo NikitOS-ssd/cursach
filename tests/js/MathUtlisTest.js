@@ -144,5 +144,9 @@ describe('MathUtils', function () {
         })
     })
 
-
+    describe('probabilityThatChannelIsFree(serviceFlowRate)', function () {
+        it('should return 0.0769 when passed serviceFlowRate= 4', function () {
+            assert.strictEqual(MathUtils.probabilityThatChannelIsFree(4), 0.0769)
+        })
+    })
 })
