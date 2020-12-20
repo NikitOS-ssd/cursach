@@ -57,26 +57,26 @@ describe('MathUtils', function () {
     })
 
     describe('calculateMeanAdmissionRequestsInHour(minTimeSec, maxTimeSec, hours)', function () {
-        it('should return 3571 when passed minTimeSec= 0.5, maxTimeSec=1.5, hours=1', function () {
+        it('should return 3600 when passed minTimeSec= 0.5, maxTimeSec=1.5, hours=1', function () {
             assert.strictEqual(MathUtils.calculateMeanAdmissionRequestsInHour(
                 0.5,
                 1.5,
                 1
-            ), 3571)
+            ), 3600)
         })
-        it('should return 1204 when passed minTimeSec= 1, maxTimeSec=5, hours=1', function () {
+        it('should return 1200 when passed minTimeSec= 1, maxTimeSec=5, hours=1', function () {
             assert.strictEqual(MathUtils.calculateMeanAdmissionRequestsInHour(
                 1,
                 5,
                 1
-            ), 1204)
+            ), 1200)
         })
         it('should return 2409 when passed minTimeSec= 2, maxTimeSec=4, hours=2', function () {
             assert.strictEqual(MathUtils.calculateMeanAdmissionRequestsInHour(
                 2,
                 4,
                 2
-            ), 2409)
+            ), 2400)
         })
         it('should throw CalculateMeanRequestHourError when minTimeSec > maxTimeSec', function () {
             assert.throws(() => {
@@ -144,12 +144,9 @@ describe('MathUtils', function () {
         })
     })
 
-    describe('probabilityThatChannelIsFree(serviceFlowRate, amoundOfChannels)', function () {
-        it('should return 0.0769 when passed serviceFlowRate=4, amoundOfChannels=2', function () {
-            assert.strictEqual(MathUtils.probabilityThatChannelIsFree(4, 2), 0.07692)
-        })
-        it('should return 0.25227 when passed serviceFlowRate=2.96393, amoundOfChannels=1', function () {
-            assert.strictEqual(MathUtils.probabilityThatChannelIsFree(2.96393, 1), 0.25227)
+    describe('loadIntencity(loadIntencityRequests, loadIntencityService)', function () {
+        it('should return 3 when passed loadIntencityRequests=3600, loadIntencityService=1200', function () {
+            assert.strictEqual(MathUtils.loadIntencity(3600, 1200), 3)
         })
     })
 
@@ -168,4 +165,30 @@ describe('MathUtils', function () {
             assert.strictEqual(MathUtils.countOfProcessedRequests(1, 5, 1), 1200)
         })
     })
+    
+    describe('probabilityThatChannelIsWork(probabilityThatChannelIsFree)', function () {
+        it('should return 0.2 when passed probabilityThatChannelIsFree=0.8', function () {
+            assert.strictEqual(MathUtils.probabilityThatChannelIsWork(0.8), 0.2)
+        })
+        
+        it('should return 0.74773 when passed probabilityThatChannelIsFree=0.25227', function () {
+            assert.strictEqual(MathUtils.probabilityThatChannelIsWork(0.25227), 0.74773)
+        })
+    })
+
+    describe('probabilityThatChannelIsFree(channelSize, loadIntencity, bufferSize)', function () {
+        it('should return 0.00275 when passed serviceFlowRate=4, amoundOfChannels=2, probabilityThatChannelIsFree=0.07692', function () {
+            assert.strictEqual(MathUtils.probabilityOfReject(4, 2, 0.07692), 0.61536)
+        })
+
+        it('should return 0.74771 when passed serviceFlowRate=2.96393, amoundOfChannels=1, probabilityThatChannelIsFree=0.25227', function () {
+            assert.strictEqual(MathUtils.probabilityOfReject(2.96393, 1, 0.25227), 0.74771)
+        })
+    })
+    
+    // describe('calculateProbabilityOfEmptyForPi(serviceFlowRate, probabilityThatChannelIsFree, bufferSize)', function () {
+    //     it('should return  when passed serviceFlowRate=2.96393, probabilityThatChannelIsFree=0.25227, bufferSize=4', function () {
+    //         assert.strictEqual(MathUtils.calculateProbabilityOfEmptyForPi(2.96393 ,0.25227, 4), [0, 0, 0, 0, 0])
+    //     }) 
+    // })
 })
