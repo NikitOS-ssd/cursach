@@ -71,6 +71,24 @@ class MathUtils {
         return this.toFixedFiveDigitsAfterComma(1 / result)
     }
 
+    /**
+     * @return {number} probability from 0 to 1
+     */
+    static probabilityOfReject(serviceFlowRate, amoundOfChannels, probabilityThatChannelIsFree) {
+        let firstMultiply = Math.pow(serviceFlowRate, amoundOfChannels) / this.factorial(amoundOfChannels)
+        let result = firstMultiply * probabilityThatChannelIsFree
+        return this.toFixedFiveDigitsAfterComma(result)
+    }
+
+    /**
+     * @return {number} integer of count of processed request
+     */
+    static countOfProcessedRequests(minTimeSec, maxTimeSec, hours) {
+        const frequencyRequestsProcessingInHour = (minTimeSec + maxTimeSec) / 2;
+        const result = 3600 / frequencyRequestsProcessingInHour
+        return parseInt(result)
+    }
+
     static secondsToHours(seconds) {
         return this.toFixedFiveDigitsAfterComma(seconds / 3600)
     }
