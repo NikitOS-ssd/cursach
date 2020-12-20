@@ -35,7 +35,7 @@ class MathUtils {
 
         const meanTimeInSec = (minTimeSec + maxTimeSec) / 2
         const meanTimeInHours = this.secondsToHours(meanTimeInSec)
-        return Math.floor(hours / meanTimeInHours)
+        return Math.floor(3600 * hours / meanTimeInSec)
     }
 
     /**
@@ -61,19 +61,6 @@ class MathUtils {
     /**
      * @return {number} probability from 0 to 1
      */
-    static probabilityThatChannelIsFree(serviceFlowRate, amoundOfChannels) {
-        let result = 0;
-
-        for(let i = 0; i <= amoundOfChannels; i++) {
-            result += Math.pow(serviceFlowRate, i) / this.factorial(i);
-        }
-
-        return this.toFixedFiveDigitsAfterComma(1 / result)
-    }
-
-    /**
-     * @return {number} probability from 0 to 1
-     */
     static probabilityOfReject(serviceFlowRate, amoundOfChannels, probabilityThatChannelIsFree) {
         let firstMultiply = Math.pow(serviceFlowRate, amoundOfChannels) / this.factorial(amoundOfChannels)
         let result = firstMultiply * probabilityThatChannelIsFree
@@ -85,8 +72,27 @@ class MathUtils {
      */
     static countOfProcessedRequests(minTimeSec, maxTimeSec, hours) {
         const frequencyRequestsProcessingInHour = (minTimeSec + maxTimeSec) / 2;
-        const result = 3600 / frequencyRequestsProcessingInHour
+        const result = (3600 * hours) / frequencyRequestsProcessingInHour
         return parseInt(result)
+    }
+
+    static loadIntencity(loadIntencityRequests, loadIntencityService) {
+        return loadIntencityRequests / loadIntencityService;
+    }
+ 
+    static probabilityThatChannelIsWork(probabilityThatChannelIsFree) {
+        return this.toFixedFiveDigitsAfterComma(1 - probabilityThatChannelIsFree)
+    }
+
+    static calculateProbabilityOfEmptyForPi(probabilityThatChannelIsWork, probabilityThatChannelIsFree, bufferSize) {
+        let result = [];
+
+        for(let i = 0; i <= bufferSize; i++) {
+            result.push((Math.pow(probabilityThatChannelIsWork, i)));
+        }
+
+        console.log(result);
+        return result
     }
 
     static secondsToHours(seconds) {
