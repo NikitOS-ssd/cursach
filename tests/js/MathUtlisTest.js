@@ -134,7 +134,7 @@ describe('MathUtils', function () {
             assert.strictEqual(MathUtils.serviceFlowRate(80, 0.05), 4)
         })
 
-        it('should return 4 when passed admissionRequestsInHour= 3571, frequencyRequestsProcessingInHour= 0.00083', function () {
+        it('should return 2.96393 when passed admissionRequestsInHour= 3571, frequencyRequestsProcessingInHour= 0.00083', function () {
             assert.strictEqual(
                 MathUtils.serviceFlowRate(
                     3571,
