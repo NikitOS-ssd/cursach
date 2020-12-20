@@ -24,7 +24,26 @@ class MathUtils {
         programProcessingTime = +programProcessingTime.toFixed(2)
         return programProcessingTime;
     }
+
+    /**
+     * @return {number} mean count of requests in integer
+     */
+    static calculateMeanRequestsInHour(minAdmissionTimeSec, maxAdmissionTimeSec, hours) {
+
+        if (minAdmissionTimeSec > maxAdmissionTimeSec || hours === 0) throw new CalculateMeanRequestHourError
+
+        const meanTimeInSec = (minAdmissionTimeSec + maxAdmissionTimeSec) / 2
+        const meanTimeInHours = this.secondsToHours(meanTimeInSec)
+        return Math.floor(hours / meanTimeInHours)
+    }
+
+    static secondsToHours(seconds) {
+        return parseFloat((seconds / 3600).toFixed(5))
+    }
 }
 
 class FactorialError extends Error {
+}
+
+class CalculateMeanRequestHourError extends Error {
 }
