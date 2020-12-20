@@ -46,4 +46,44 @@ describe('MathUtils', function () {
             }
         })
     })
+
+    describe('secondsToHours()', function () {
+        it('should return 1 when passed 3600', function () {
+            assert.strictEqual(MathUtils.secondsToHours(3600), 1)
+        })
+        it('should return 0.00028 when passed 1', function () {
+            assert.strictEqual(MathUtils.secondsToHours(1), 0.00028)
+        })
+    })
+
+    describe('calculateMeanRequestsInHour(minAdmissionTimeSec, maxAdmissionTimeSec, hours)', function () {
+        it('should return 3571 when passed minAdmissionTimeSec= 0.5, maxAdmissionTimeSec=1.5, hours=1', function () {
+            assert.strictEqual(MathUtils.calculateMeanRequestsInHour(
+                0.5,
+                1.5,
+                1
+            ), 3571)
+        })
+        it('should return 2409 when passed minAdmissionTimeSec= 2, maxAdmissionTimeSec=4, hours=2', function () {
+            assert.strictEqual(MathUtils.calculateMeanRequestsInHour(
+                2,
+                4,
+                2
+            ), 2409)
+        })
+        it('should throw CalculateMeanRequestHourError when minAdmissionTimeSec > maxAdmissionTimeSec', function () {
+            assert.throws(() => {
+                    MathUtils.calculateMeanRequestsInHour(4, 2, 1)
+                },
+                CalculateMeanRequestHourError
+            )
+        })
+        it('should throw CalculateMeanRequestHourError when hours is 0', function () {
+            assert.throws(() => {
+                    MathUtils.calculateMeanRequestsInHour(4, 2, 0)
+                },
+                CalculateMeanRequestHourError
+            )
+        })
+    })
 })
