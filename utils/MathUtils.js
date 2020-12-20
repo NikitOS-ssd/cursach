@@ -45,13 +45,21 @@ class MathUtils {
         if (minTimeSec > maxTimeSec || hours === 0) throw new CalculateMeanRequestHourError
 
         const meanTimeInSec = (minTimeSec + maxTimeSec) / 2
-        const meanTimeInHours = this.secondsToHours(meanTimeInSec)
+        const meanTimeInMinutes = this.secondsToMinutes(meanTimeInSec)
 
-        return Math.floor(meanTimeInHours / hours)
+        return this.toFixedFiveDigitsAfterComma(meanTimeInMinutes / 60 * hours)
     }
 
     static secondsToHours(seconds) {
-        return parseFloat((seconds / 3600).toFixed(5))
+        return this.toFixedFiveDigitsAfterComma(seconds / 3600)
+    }
+
+    static secondsToMinutes(seconds) {
+        return this.toFixedFiveDigitsAfterComma(seconds / 60)
+    }
+
+    static toFixedFiveDigitsAfterComma(number){
+        return parseFloat(parseFloat(number).toFixed(5))
     }
 }
 

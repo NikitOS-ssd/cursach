@@ -93,4 +93,41 @@ describe('MathUtils', function () {
             )
         })
     })
+
+    describe('secondsToMinutes(seconds)', function () {
+        it('should return 1 when passed 60', function () {
+            assert.strictEqual(MathUtils.secondsToMinutes(60), 1)
+        })
+        it('should return 3 when passed 180', function () {
+            assert.strictEqual(MathUtils.secondsToMinutes(180), 3)
+        })
+        it('should return 0.5 when passed 30', function () {
+            assert.strictEqual(MathUtils.secondsToMinutes(30), 0.5)
+        })
+    })
+
+    describe('toFixedFiveDigitsAfterComma(number)', function () {
+        it('should return 0.00083 when passed 0.0008333333333333334', function () {
+            assert.strictEqual(MathUtils.toFixedFiveDigitsAfterComma(0.0008333333333333334), 0.00083)
+        })
+    })
+
+    describe('calculateFrequencyRequestsInHour(minTimeSec, maxTimeSec, hours)', function () {
+        it('should return 0.05 when passed minTimeSec= 180, maxTimeSec=180, hours=1', function () {
+            assert.strictEqual(MathUtils.calculateFrequencyRequestsInHour(
+                180,
+                180,
+                1
+            ), 0.05)
+        })
+        it('should return 0.00083 when passed minTimeSec= 1, maxTimeSec=5, hours=1', function () {
+            assert.strictEqual(MathUtils.calculateFrequencyRequestsInHour(
+                1,
+                5,
+                1
+            ), 0.00083)
+        })
+    })
+
+
 })
