@@ -28,13 +28,26 @@ class MathUtils {
     /**
      * @return {number} mean count of requests in integer
      */
-    static calculateMeanRequestsInHour(minTimeSec, maxTimeSec, hours) {
+    static calculateMeanAdmissionRequestsInHour(minTimeSec, maxTimeSec, hours) {
 
         if (minTimeSec > maxTimeSec || hours === 0) throw new CalculateMeanRequestHourError
 
         const meanTimeInSec = (minTimeSec + maxTimeSec) / 2
         const meanTimeInHours = this.secondsToHours(meanTimeInSec)
         return Math.floor(hours / meanTimeInHours)
+    }
+
+    /**
+     * @return {number} mean frequency processing
+     */
+    static calculateFrequencyRequestsInHour(minTimeSec, maxTimeSec, hours) {
+
+        if (minTimeSec > maxTimeSec || hours === 0) throw new CalculateMeanRequestHourError
+
+        const meanTimeInSec = (minTimeSec + maxTimeSec) / 2
+        const meanTimeInHours = this.secondsToHours(meanTimeInSec)
+
+        return Math.floor(meanTimeInHours / hours)
     }
 
     static secondsToHours(seconds) {
