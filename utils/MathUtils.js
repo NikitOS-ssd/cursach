@@ -61,8 +61,14 @@ class MathUtils {
     /**
      * @return {number} probability from 0 to 1
      */
-    static probabilityThatChannelIsFree(serviceFlowRate) {
-        //TODO implement function
+    static probabilityThatChannelIsFree(serviceFlowRate, amoundOfChannels) {
+        let result = 0;
+
+        for(let i = 0; i <= amoundOfChannels; i++) {
+            result += Math.pow(serviceFlowRate, i) / this.factorial(i);
+        }
+
+        return this.toFixedFiveDigitsAfterComma(1 / result)
     }
 
     static secondsToHours(seconds) {
