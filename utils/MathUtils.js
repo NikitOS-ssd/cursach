@@ -79,20 +79,30 @@ class MathUtils {
     static loadIntencity(loadIntencityRequests, loadIntencityService) {
         return loadIntencityRequests / loadIntencityService;
     }
- 
+
     static probabilityThatChannelIsWork(probabilityThatChannelIsFree) {
         return this.toFixedFiveDigitsAfterComma(1 - probabilityThatChannelIsFree)
     }
 
-    static calculateProbabilityOfEmptyForPi(probabilityThatChannelIsWork, probabilityThatChannelIsFree, bufferSize) {
-        let result = [];
+    static probabilityThatChannelIsFree(loadIntencity, channelSize, bufferSize) {
 
-        for(let i = 0; i <= bufferSize; i++) {
-            result.push((Math.pow(probabilityThatChannelIsWork, i)));
+        let firstSummResult = 0
+        for (let i = 0; i <= channelSize; i++) {
+            firstSummResult += Math.pow(loadIntencity, i) / this.factorial(i)
         }
+        console.log(firstSummResult)
 
-        console.log(result);
-        return result
+        let secondSumMultiplayer = Math.pow(loadIntencity, channelSize)
+        console.log(secondSumMultiplayer)
+
+        let secondSummResult = 0
+        for (let i = 1; i <= bufferSize; i++) {
+            secondSummResult += Math.pow((loadIntencity / channelSize), i)
+        }
+        console.log(secondSummResult)
+
+        let result = 1 / (firstSummResult + secondSumMultiplayer * secondSummResult)
+        return this.toFixedFiveDigitsAfterComma(result)
     }
 
     static secondsToHours(seconds) {
