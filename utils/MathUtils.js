@@ -71,6 +71,15 @@ class MathUtils {
         return this.toFixedFiveDigitsAfterComma(1 / result)
     }
 
+    /**
+     * @return {number} probability from 0 to 1
+     */
+    static probabilityOfReject(serviceFlowRate, amoundOfChannels, probabilityThatChannelIsFree) {
+        let firstMultiply = Math.pow(serviceFlowRate, amoundOfChannels) / this.factorial(amoundOfChannels)
+        let result = firstMultiply * probabilityThatChannelIsFree
+        return this.toFixedFiveDigitsAfterComma(result)
+    }
+
     static secondsToHours(seconds) {
         return this.toFixedFiveDigitsAfterComma(seconds / 3600)
     }

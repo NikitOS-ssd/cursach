@@ -152,4 +152,14 @@ describe('MathUtils', function () {
             assert.strictEqual(MathUtils.probabilityThatChannelIsFree(2.96393, 1), 0.25227)
         })
     })
+
+    describe('probabilityOfReject(serviceFlowRate, amoundOfChannels, probabilityThatChannelIsFree)', function () {
+        it('should return 0.61536 when passed serviceFlowRate=4, amoundOfChannels=2, probabilityThatChannelIsFree=0.07692', function () {
+            assert.strictEqual(MathUtils.probabilityOfReject(4, 2, 0.07692), 0.61536)
+        })
+
+        it('should return 0.74771 when passed serviceFlowRate=2.96393, amoundOfChannels=1, probabilityThatChannelIsFree=0.25227', function () {
+            assert.strictEqual(MathUtils.probabilityOfReject(2.96393, 1, 0.25227), 0.74771)
+        })
+    })
 })
