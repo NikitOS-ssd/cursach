@@ -3,7 +3,7 @@ let greenBar = document.querySelector('.green__done')
 
 const maxLengthOfBuffer = 4;
 
-function lin() {
+function linear_model() {
     let minimumAdmissionTime = +document.getElementById('Tzmin').value / 1000
     minimumAdmissionTime = +minimumAdmissionTime.toFixed(2)
     let maximumAdmissionTime = +document.getElementById('Tzmax').value / 1000
@@ -62,6 +62,6 @@ function lin() {
 linStart.addEventListener('click', ev => {
         ev.preventDefault()
         greenBar.style.width = 0 + '%'
-        lin()
+        linear_model()
     }
 )
