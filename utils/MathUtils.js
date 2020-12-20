@@ -28,11 +28,11 @@ class MathUtils {
     /**
      * @return {number} mean count of requests in integer
      */
-    static calculateMeanRequestsInHour(minAdmissionTimeSec, maxAdmissionTimeSec, hours) {
+    static calculateMeanRequestsInHour(minTimeSec, maxTimeSec, hours) {
 
-        if (minAdmissionTimeSec > maxAdmissionTimeSec || hours === 0) throw new CalculateMeanRequestHourError
+        if (minTimeSec > maxTimeSec || hours === 0) throw new CalculateMeanRequestHourError
 
-        const meanTimeInSec = (minAdmissionTimeSec + maxAdmissionTimeSec) / 2
+        const meanTimeInSec = (minTimeSec + maxTimeSec) / 2
         const meanTimeInHours = this.secondsToHours(meanTimeInSec)
         return Math.floor(hours / meanTimeInHours)
     }
