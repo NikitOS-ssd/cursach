@@ -2,6 +2,7 @@ class MathUtils {
 
     /**
      * @throws {FactorialError}
+     * @return {number}
      */
     static factorial(number) {
         if (number % 1 !== 0) throw new FactorialError("number is not integer")
@@ -10,14 +11,14 @@ class MathUtils {
     }
 
     /**
-     * @return number that  `>= 0` and `<= 1`
+     * @return {number} number that  `>= 0` and `<= 1`
      */
     static getRandomNumberFromZeroToOne() {
         return parseFloat(Math.random().toFixed(2))
     }
 
     /**
-     * @return random number that   `>= startBarrier` and `<= endBarrier`
+     * @return {number} random number that   `>= startBarrier` and `<= endBarrier`
      */
     static generateRandomNumberBetween(startBarrier, endBarrier) {
         let programProcessingTime = (startBarrier - endBarrier) * MathUtils.getRandomNumberFromZeroToOne() + endBarrier
@@ -40,7 +41,7 @@ class MathUtils {
     /**
      * @return {number} mean frequency processing
      */
-    static calculateFrequencyRequestsInHour(minTimeSec, maxTimeSec, hours) {
+    static calculateFrequencyRequestsProcessingInHour(minTimeSec, maxTimeSec, hours) {
 
         if (minTimeSec > maxTimeSec || hours === 0) throw new CalculateMeanRequestHourError
 
@@ -48,6 +49,13 @@ class MathUtils {
         const meanTimeInMinutes = this.secondsToMinutes(meanTimeInSec)
 
         return this.toFixedFiveDigitsAfterComma(meanTimeInMinutes / 60 * hours)
+    }
+
+    /**
+     * @return {number} service flow rate
+     */
+    static serviceFlowRate(admissionRequestsInHour, frequencyRequestsProcessingInHour) {
+        return admissionRequestsInHour * frequencyRequestsProcessingInHour
     }
 
     static secondsToHours(seconds) {
@@ -58,7 +66,7 @@ class MathUtils {
         return this.toFixedFiveDigitsAfterComma(seconds / 60)
     }
 
-    static toFixedFiveDigitsAfterComma(number){
+    static toFixedFiveDigitsAfterComma(number) {
         return parseFloat(parseFloat(number).toFixed(5))
     }
 }

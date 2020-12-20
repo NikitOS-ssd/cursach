@@ -112,16 +112,16 @@ describe('MathUtils', function () {
         })
     })
 
-    describe('calculateFrequencyRequestsInHour(minTimeSec, maxTimeSec, hours)', function () {
+    describe('calculateFrequencyRequestsProcessingInHour(minTimeSec, maxTimeSec, hours)', function () {
         it('should return 0.05 when passed minTimeSec= 180, maxTimeSec=180, hours=1', function () {
-            assert.strictEqual(MathUtils.calculateFrequencyRequestsInHour(
+            assert.strictEqual(MathUtils.calculateFrequencyRequestsProcessingInHour(
                 180,
                 180,
                 1
             ), 0.05)
         })
         it('should return 0.00083 when passed minTimeSec= 1, maxTimeSec=5, hours=1', function () {
-            assert.strictEqual(MathUtils.calculateFrequencyRequestsInHour(
+            assert.strictEqual(MathUtils.calculateFrequencyRequestsProcessingInHour(
                 1,
                 5,
                 1
@@ -129,5 +129,18 @@ describe('MathUtils', function () {
         })
     })
 
+    describe('serviceFlowRate(admissionRequestsInHour, frequencyRequestsProcessingInHour)', function () {
+        it('should return 4 when passed admissionRequestsInHour= 80, frequencyRequestsProcessingInHour= 0.05', function () {
+            assert.strictEqual(MathUtils.serviceFlowRate(80, 0.05), 4)
+        })
 
+        it('should return 4 when passed admissionRequestsInHour= 3571, frequencyRequestsProcessingInHour= 0.00083', function () {
+            assert.strictEqual(
+                MathUtils.serviceFlowRate(
+                    3571,
+                    0.00083
+                ), 2.96393
+            )
+        })
+    })
 })
