@@ -105,6 +105,13 @@ class MathUtils {
         return this.toFixedFiveDigitsAfterComma(result)
     }
 
+    static probabilityThatOneChannelIsWork(loadIntencity, probabilityThatChannelIsFree) {
+
+        let result =
+            (Math.pow(loadIntencity, 1) / this.toFixedFiveDigitsAfterComma(1)) * probabilityThatChannelIsFree
+        return this.toFixedFiveDigitsAfterComma(result)
+    }
+
     static secondsToHours(seconds) {
         return this.toFixedFiveDigitsAfterComma(seconds / 3600)
     }

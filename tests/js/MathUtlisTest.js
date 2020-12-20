@@ -181,4 +181,10 @@ describe('MathUtils', function () {
             assert.strictEqual(MathUtils.probabilityThatChannelIsFree(3, 1, 4), 0.00275)
         })
     })
+
+    describe('probabilityThatOneChannelIsWork(loadIntencity, probabilityThatChannelIsFree)', function () {
+        it('should return 0.00824 when passed loadIntencity=3, probabilityThatChannelIsFree=0.00275', function () {
+            assert.strictEqual(MathUtils.probabilityThatOneChannelIsWork(3, 0.00275), 0.00825)
+        })
+    })
 })
