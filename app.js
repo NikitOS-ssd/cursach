@@ -23,13 +23,8 @@ function linear_model() {
     for (let timeFromStart = 0; timeFromStart <= timeOfServerWork + 1;) {
         let progressBarStatus = (timeFromStart * 100) / timeOfServerWork
 
-        let admissionTime = (maximumAdmissionTime - minimumAdmissionTime) * MathUtils.getRandomNumberFromZeroToOne() + minimumAdmissionTime
-        admissionTime = parseInt(admissionTime.toFixed(2))
-
-        let programProcessingTime = (maxTimeOfProcessing - minTimeOfProcessing) * MathUtils.getRandomNumberFromZeroToOne() + minTimeOfProcessing
-        programProcessingTime = +programProcessingTime.toFixed(2)
-
-        console.log(programProcessingTime)
+        let admissionTime = MathUtils.generateRandomNumberBetween(maximumAdmissionTime, minimumAdmissionTime);
+        let programProcessingTime = MathUtils.generateRandomNumberBetween(maxTimeOfProcessing, minTimeOfProcessing);
 
         if (buffer.length > 0 && buffer.length <= maxLengthOfBuffer) {
             if (server_1 <= 0) {
@@ -38,8 +33,6 @@ function linear_model() {
             } else {
                 if (buffer.length < maxLengthOfBuffer) {
                     buffer.push(programProcessingTime)
-                } else {
-                    console.log("program was rejected")
                 }
             }
         } else if (buffer.length === 0) {
@@ -55,7 +48,7 @@ function linear_model() {
         }
         greenBar.style.width = progressBarStatus + '%'
 
-        timeFromStart = admissionTime
+        timeFromStart = timeFromStart + admissionTime
     }
 }
 
