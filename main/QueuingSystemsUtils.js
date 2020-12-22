@@ -90,6 +90,11 @@ class QueuingSystemsUtils {
         const result = loadIntencity * probabilityOfService;
         return CoreNumberUtils.toFixedFiveDigitsAfterComma(result);
     }
+
+    static probabilityOfServiced(probabilityOfReject) {
+        const result = 1 - probabilityOfReject;
+        return CoreNumberUtils.toFixedFiveDigitsAfterComma(result);
+    }
 }
 
 class CalculateMeanRequestHourError extends Error {

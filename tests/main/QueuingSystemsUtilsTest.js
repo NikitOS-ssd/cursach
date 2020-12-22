@@ -109,10 +109,15 @@ describe('QueuingSystemsUtils', function () {
         })
     })
 
-    describe('calculateMeanNumberOfRequestsInServed(loadIntencity, probabilityOfService)', function () {
+    describe('calculateMeanNumberOfRequestsInServed(loadIntencity, probabilityOfServiced)', function () {
         it('should return 0.996 when passed loadIntencity=3, probabilityOfService=0.332', function () {
             assert.strictEqual(QueuingSystemsUtils.calculateMeanNumberOfRequestsInServed(3, 0.332), 0.996)
         })
     })
 
+    describe('probabilityOfServiced(probabilityOfReject)', function () {
+        it('should return 0.332 when passed probabilityOfReject=0.668', function () {
+            assert.strictEqual(QueuingSystemsUtils.probabilityOfServiced(0.668), 0.332)
+        })
+    })
 })
