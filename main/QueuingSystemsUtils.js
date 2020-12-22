@@ -107,7 +107,17 @@ class QueuingSystemsUtils {
     }
 
     static calculateMeanTimeOfRequestInQueue(meanRequestsInSystem, absoluteBandwidth, timeForProcessingOneRequest) {
-        let result = (meanRequestsInSystem/absoluteBandwidth) - timeForProcessingOneRequest
+        let result = (meanRequestsInSystem / absoluteBandwidth) - timeForProcessingOneRequest
+        return CoreNumberUtils.toFixedFiveDigitsAfterComma(result)
+    }
+
+    static calculateProbabilityOfLastP(bufferSize, amountOfChannels, loadIntensity) {
+        let result = 0
+        let denominator = 0
+        for (let k = 0; k < bufferSize + amountOfChannels; k++) {
+            denominator += Math.pow(loadIntensity, k)
+        }
+        result = 1 / denominator
         return CoreNumberUtils.toFixedFiveDigitsAfterComma(result)
     }
 }

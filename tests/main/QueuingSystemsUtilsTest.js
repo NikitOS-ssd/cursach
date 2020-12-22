@@ -138,4 +138,10 @@ describe('QueuingSystemsUtils', function () {
             assert.strictEqual(QueuingSystemsUtils.calculateMeanTimeOfRequestInQueue(4.508, 1196.703, 0.00083), 0.00294)
         })
     })
+
+    describe('calculateProbabilityOfLastP(bufferSize, amountOfChannels, loadIntensity)', function () {
+        it('should return 0.00826 when passed bufferSize=4, amountOfChannels=1, loadIntensity=3', function () {
+            assert.strictEqual(QueuingSystemsUtils.calculateProbabilityOfLastP(4, 1, 3), 0.00826)
+        })
+    })
 })
