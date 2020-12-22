@@ -63,16 +63,13 @@ class QueuingSystemsUtils {
         for (let i = 0; i <= channelSize; i++) {
             firstSummResult += Math.pow(loadIntencity, i) / MathUtils.factorial(i)
         }
-        console.log(firstSummResult)
 
         let secondSumMultiplayer = Math.pow(loadIntencity, channelSize)
-        console.log(secondSumMultiplayer)
 
         let secondSummResult = 0
         for (let i = 1; i <= bufferSize; i++) {
             secondSummResult += Math.pow((loadIntencity / channelSize), i)
         }
-        console.log(secondSummResult)
 
         let result = 1 / (firstSummResult + secondSumMultiplayer * secondSummResult)
         return CoreNumberUtils.toFixedFiveDigitsAfterComma(result)
@@ -84,9 +81,19 @@ class QueuingSystemsUtils {
         return CoreNumberUtils.toFixedFiveDigitsAfterComma(result)
     }
 
-    static calculateNumberOfRequestsInSystem(numberOfRequestsInQueue, numberOfRequestsInServed) {
+    static calculateMeanNumberOfRequestsInSystem(numberOfRequestsInQueue, numberOfRequestsInServed) {
         const result = numberOfRequestsInQueue + numberOfRequestsInServed;
-        return result
+        return CoreNumberUtils.toFixedFiveDigitsAfterComma(result);
+    }
+
+    static calculateMeanNumberOfRequestsInServed(loadIntencity, probabilityOfService) {
+        const result = loadIntencity * probabilityOfService;
+        return CoreNumberUtils.toFixedFiveDigitsAfterComma(result);
+    }
+
+    static probabilityOfServiced(probabilityOfReject) {
+        const result = 1 - probabilityOfReject;
+        return CoreNumberUtils.toFixedFiveDigitsAfterComma(result);
     }
 }
 

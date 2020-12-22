@@ -103,9 +103,21 @@ describe('QueuingSystemsUtils', function () {
         })
     })
 
-    describe('calculateNumberOfRequestsInSystem(numberOfRequestsInQueue, numberOfRequestsInServed)', function () {
+    describe('calculateMeanNumberOfRequestsInSystem(numberOfRequestsInQueue, numberOfRequestsInServed)', function () {
         it('should return 4.508 when passed numberOfRequestsInQueue=3.511, numberOfRequestsInServed=0.997', function () {
-            assert.strictEqual(QueuingSystemsUtils.calculateNumberOfRequestsInSystem(3.511, 0.997), 4.508)
+            assert.strictEqual(QueuingSystemsUtils.calculateMeanNumberOfRequestsInSystem(3.511, 0.997), 4.508)
+        })
+    })
+
+    describe('calculateMeanNumberOfRequestsInServed(loadIntencity, probabilityOfServiced)', function () {
+        it('should return 0.996 when passed loadIntencity=3, probabilityOfService=0.332', function () {
+            assert.strictEqual(QueuingSystemsUtils.calculateMeanNumberOfRequestsInServed(3, 0.332), 0.996)
+        })
+    })
+
+    describe('probabilityOfServiced(probabilityOfReject)', function () {
+        it('should return 0.332 when passed probabilityOfReject=0.668', function () {
+            assert.strictEqual(QueuingSystemsUtils.probabilityOfServiced(0.668), 0.332)
         })
     })
 })
