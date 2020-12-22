@@ -121,7 +121,7 @@ class MathUtils {
     }
 
     static toFixedFiveDigitsAfterComma(number) {
-        return parseFloat(parseFloat(number).toFixed(5))
+        return parseFloat(number).toFixed(5)
     }
 }
 
