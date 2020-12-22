@@ -84,7 +84,6 @@ class QueuingSystemsUtils {
 
     static calculateNumberOfRequestsInSystem(numberOfRequestsInQueue, numberOfRequestsInServed) {
         const result = numberOfRequestsInQueue + numberOfRequestsInServed;
-        
         return result
     }
 }
