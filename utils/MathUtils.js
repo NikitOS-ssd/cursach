@@ -119,8 +119,11 @@ class MathUtils {
         return this.toFixedFiveDigitsAfterComma(seconds / 60)
     }
 
+    /**
+     * @return {number} return number with five digitalis after comma
+     */
     static toFixedFiveDigitsAfterComma(number) {
-        return parseFloat(number).toFixed(5)
+        return parseFloat(parseFloat(number).toFixed(5))
     }
 }
 
