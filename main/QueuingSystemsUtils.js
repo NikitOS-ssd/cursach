@@ -95,6 +95,11 @@ class QueuingSystemsUtils {
         const result = 1 - probabilityOfReject;
         return CoreNumberUtils.toFixedFiveDigitsAfterComma(result);
     }
+
+    static calculateMeanTimeOfRequestInQueue(meanRequestsInSystem, absoluteBandwidth, timeForProcessingOneRequest) {
+        let result = (meanRequestsInSystem/absoluteBandwidth) - timeForProcessingOneRequest
+        return CoreNumberUtils.toFixedFiveDigitsAfterComma(result)
+    }
 }
 
 class CalculateMeanRequestHourError extends Error {
