@@ -139,6 +139,12 @@ describe('QueuingSystemsUtils', function () {
         })
     })
 
+    describe('calculateMeanNumberOfRequestInQueue(loadIntencity, amountOfChannels, bufferSize, probabilityThatChannelIsFree)', function () {
+        it('should return 0.396 when passed loadIntencity=3, amountOfChannels=1, bufferSize=4, probabilityThatChannelIsFree=0.00275', function () {
+            assert.strictEqual(QueuingSystemsUtils.calculateMeanNumberOfRequestInQueue(3, 1, 4, 0.00275), 0.396)
+        })
+    })
+
     describe('calculateProbabilityOfLastP(bufferSize, amountOfChannels, loadIntensity)', function () {
         it('should return 0.00826 when passed bufferSize=4, amountOfChannels=1, loadIntensity=3', function () {
             assert.strictEqual(QueuingSystemsUtils.calculateProbabilityOfLastP(4, 1, 3), 0.00826)

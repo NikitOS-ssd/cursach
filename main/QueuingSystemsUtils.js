@@ -133,14 +133,15 @@ class QueuingSystemsUtils {
             let pFromI = firstMultiplier * lastP
             result.push(CoreNumberUtils.toFixedFiveDigitsAfterComma(pFromI))
         }
-        let sum = 0;
-        result.forEach((value, index, array) => {
-            sum += value
-        })
-
-        console.log(sum + 0.00275)
-
         return result
+    }
+
+    static calculateMeanNumberOfRequestInQueue(loadIntencity, amountOfChannels, bufferSize, probabilityThatChannelIsFree) {
+        const allAddictionInNumerator = Math.pow(loadIntencity, amountOfChannels+1) * 1 - Math.pow(loadIntencity/amountOfChannels, bufferSize) * (bufferSize+1-bufferSize*loadIntencity/amountOfChannels);
+        const allAddictionInDominator = MathUtils.factorial(amountOfChannels*amountOfChannels) * Math.pow((1-(loadIntencity/amountOfChannels)), 2);
+
+        const result = allAddictionInNumerator / allAddictionInDominator * probabilityThatChannelIsFree;
+        return CoreNumberUtils.toFixedFiveDigitsAfterComma(result)
     }
 }
 
