@@ -106,4 +106,10 @@ describe('QueuingSystemsUtils', function () {
             assert.strictEqual(QueuingSystemsUtils.probabilityThatOneChannelIsWork(3, 0.00275), 0.00825)
         })
     })
+
+    describe('calculateNumberOfRequestsInSystem(numberOfRequestsInQueue, numberOfRequestsInServed)', function () {
+        it('should return 4.508 when passed numberOfRequestsInQueue=3.511, numberOfRequestsInServed=0.997', function () {
+            assert.strictEqual(QueuingSystemsUtils.calculateNumberOfRequestsInSystem(3.511, 0.997), 4.508)
+        })
+    })
 })
