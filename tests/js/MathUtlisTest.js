@@ -26,36 +26,6 @@ describe('MathUtils', function () {
         })
     })
 
-    describe('generateRandomNumberBetween(startBarrier, endBarrier)', function () {
-        it('should return number between startBarrier and endBarrier', function () {
-            let startBarrier = 0
-            let endBarrier = 100
-
-            for (let i = 0; i < 1000; i++) {
-                let generatedNumber = MathUtils.generateRandomNumberBetween(startBarrier, endBarrier)
-                assert.isTrue(generatedNumber >= startBarrier && generatedNumber <= endBarrier)
-            }
-        })
-    })
-
-    describe('getRandomNumberFromZeroToOne()', function () {
-        it('should return number between 0 and 1', function () {
-            for (let i = 0; i < 1000; i++) {
-                let generatedNumber = MathUtils.getRandomNumberFromZeroToOne()
-                assert.isTrue(generatedNumber >= 0 && generatedNumber <= 1)
-            }
-        })
-    })
-
-    describe('secondsToHours()', function () {
-        it('should return 1 when passed 3600', function () {
-            assert.strictEqual(MathUtils.secondsToHours(3600), 1)
-        })
-        it('should return 0.00028 when passed 1', function () {
-            assert.strictEqual(MathUtils.secondsToHours(1), 0.00028)
-        })
-    })
-
     describe('calculateMeanAdmissionRequestsInHour(minTimeSec, maxTimeSec, hours)', function () {
         it('should return 3600 when passed minTimeSec= 0.5, maxTimeSec=1.5, hours=1', function () {
             assert.strictEqual(MathUtils.calculateMeanAdmissionRequestsInHour(
@@ -91,24 +61,6 @@ describe('MathUtils', function () {
                 },
                 CalculateMeanRequestHourError
             )
-        })
-    })
-
-    describe('secondsToMinutes(seconds)', function () {
-        it('should return 1 when passed 60', function () {
-            assert.strictEqual(MathUtils.secondsToMinutes(60), 1)
-        })
-        it('should return 3 when passed 180', function () {
-            assert.strictEqual(MathUtils.secondsToMinutes(180), 3)
-        })
-        it('should return 0.5 when passed 30', function () {
-            assert.strictEqual(MathUtils.secondsToMinutes(30), 0.5)
-        })
-    })
-
-    describe('toFixedFiveDigitsAfterComma(number)', function () {
-        it('should return 0.00083 when passed 0.0008333333333333334', function () {
-            assert.strictEqual(MathUtils.toFixedFiveDigitsAfterComma(0.0008333333333333334), 0.00083)
         })
     })
 

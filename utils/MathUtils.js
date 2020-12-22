@@ -1,3 +1,6 @@
+/**
+ * @requires(CoreNumberUtils, TimeUtils)
+ */
 class MathUtils {
 
     /**
@@ -10,21 +13,6 @@ class MathUtils {
         return (number > 1) ? number * this.factorial(number - 1) : 1
     }
 
-    /**
-     * @return {number} number that  `>= 0` and `<= 1`
-     */
-    static getRandomNumberFromZeroToOne() {
-        return parseFloat(Math.random().toFixed(2))
-    }
-
-    /**
-     * @return {number} random number that   `>= startBarrier` and `<= endBarrier`
-     */
-    static generateRandomNumberBetween(startBarrier, endBarrier) {
-        let programProcessingTime = (startBarrier - endBarrier) * MathUtils.getRandomNumberFromZeroToOne() + endBarrier
-        programProcessingTime = +programProcessingTime.toFixed(2)
-        return programProcessingTime;
-    }
 
     /**
      * @return {number} mean count of requests in integer
@@ -47,7 +35,7 @@ class MathUtils {
         const meanTimeInSec = (minTimeSec + maxTimeSec) / 2
         const meanTimeInMinutes = this.secondsToMinutes(meanTimeInSec)
 
-        return this.toFixedFiveDigitsAfterComma(meanTimeInMinutes / 60 * hours)
+        return CoreNumberUtils.toFixedFiveDigitsAfterComma(meanTimeInMinutes / 60 * hours)
     }
 
     /**
@@ -63,7 +51,7 @@ class MathUtils {
     static probabilityOfReject(serviceFlowRate, amoundOfChannels, probabilityThatChannelIsFree) {
         let firstMultiply = Math.pow(serviceFlowRate, amoundOfChannels) / this.factorial(amoundOfChannels)
         let result = firstMultiply * probabilityThatChannelIsFree
-        return this.toFixedFiveDigitsAfterComma(result)
+        return CoreNumberUtils.toFixedFiveDigitsAfterComma(result)
     }
 
     /**
@@ -71,8 +59,7 @@ class MathUtils {
      */
     static countOfProcessedRequests(minTimeSec, maxTimeSec, hours) {
         const frequencyRequestsProcessingInHour = (minTimeSec + maxTimeSec) / 2;
-        const result = (3600 * hours) / frequencyRequestsProcessingInHour
-        return parseInt(result)
+        return (3600 * hours) / frequencyRequestsProcessingInHour
     }
 
     static loadIntencity(loadIntencityRequests, loadIntencityService) {
@@ -80,7 +67,7 @@ class MathUtils {
     }
 
     static probabilityThatChannelIsWork(probabilityThatChannelIsFree) {
-        return this.toFixedFiveDigitsAfterComma(1 - probabilityThatChannelIsFree)
+        return CoreNumberUtils.toFixedFiveDigitsAfterComma(1 - probabilityThatChannelIsFree)
     }
 
     static probabilityThatChannelIsFree(loadIntencity, channelSize, bufferSize) {
@@ -101,29 +88,14 @@ class MathUtils {
         console.log(secondSummResult)
 
         let result = 1 / (firstSummResult + secondSumMultiplayer * secondSummResult)
-        return this.toFixedFiveDigitsAfterComma(result)
+        return CoreNumberUtils.toFixedFiveDigitsAfterComma(result)
     }
 
     static probabilityThatOneChannelIsWork(loadIntencity, probabilityThatChannelIsFree) {
 
         let result =
-            (Math.pow(loadIntencity, 1) / this.toFixedFiveDigitsAfterComma(1)) * probabilityThatChannelIsFree
-        return this.toFixedFiveDigitsAfterComma(result)
-    }
-
-    static secondsToHours(seconds) {
-        return this.toFixedFiveDigitsAfterComma(seconds / 3600)
-    }
-
-    static secondsToMinutes(seconds) {
-        return this.toFixedFiveDigitsAfterComma(seconds / 60)
-    }
-
-    /**
-     * @return {number} return number with five digitalis after comma
-     */
-    static toFixedFiveDigitsAfterComma(number) {
-        return parseFloat(parseFloat(number).toFixed(5))
+            (Math.pow(loadIntencity, 1) / CoreNumberUtils.toFixedFiveDigitsAfterComma(1)) * probabilityThatChannelIsFree
+        return CoreNumberUtils.toFixedFiveDigitsAfterComma(result)
     }
 }
 
