@@ -95,7 +95,7 @@ class QueuingSystemsUtils {
         const result = 1 - probabilityOfReject;
         return CoreNumberUtils.toFixedFiveDigitsAfterComma(result);
     }
-    
+
     static absoluteBandWidth(probabilityOfServiced, meanAdmissionRequestsInHour) {
         const result = probabilityOfServiced * meanAdmissionRequestsInHour;
         return CoreNumberUtils.toFixedFiveDigitsAfterComma(result);
@@ -104,6 +104,11 @@ class QueuingSystemsUtils {
     static calculateMeanTimeOfRequestInSystem(meanNumberOfRequestsInSystem, absoluteBandWidth) {
         const result = meanNumberOfRequestsInSystem / absoluteBandWidth;
         return CoreNumberUtils.toFixedFiveDigitsAfterComma(result);
+    }
+
+    static calculateMeanTimeOfRequestInQueue(meanRequestsInSystem, absoluteBandwidth, timeForProcessingOneRequest) {
+        let result = (meanRequestsInSystem/absoluteBandwidth) - timeForProcessingOneRequest
+        return CoreNumberUtils.toFixedFiveDigitsAfterComma(result)
     }
 }
 

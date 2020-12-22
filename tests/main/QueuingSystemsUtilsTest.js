@@ -132,4 +132,10 @@ describe('QueuingSystemsUtils', function () {
             assert.strictEqual(QueuingSystemsUtils.calculateMeanTimeOfRequestInSystem(4.508, 1195.2), 0.00377)
         })
     })
+
+    describe('calculateMeanTimeOfRequestInQueue(meanRequestsInSystem, absoluteBandwidth, timeForProcessingOneRequest)', function () {
+        it('should return 0.00294 when passed meanRequestsInSystem=4.508, absoluteBandwidth=1196.703, timeForProcessingOneRequest=0.00083', function () {
+            assert.strictEqual(QueuingSystemsUtils.calculateMeanTimeOfRequestInQueue(4.508, 1196.703, 0.00083), 0.00294)
+        })
+    })
 })
