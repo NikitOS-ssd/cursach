@@ -100,6 +100,11 @@ class QueuingSystemsUtils {
         const result = probabilityOfServiced * meanAdmissionRequestsInHour;
         return CoreNumberUtils.toFixedFiveDigitsAfterComma(result);
     }
+
+    static calculateMeanTimeOfRequestInSystem(meanNumberOfRequestsInSystem, absoluteBandWidth) {
+        const result = meanNumberOfRequestsInSystem / absoluteBandWidth;
+        return CoreNumberUtils.toFixedFiveDigitsAfterComma(result);
+    }
 }
 
 class CalculateMeanRequestHourError extends Error {

@@ -126,4 +126,10 @@ describe('QueuingSystemsUtils', function () {
             assert.strictEqual(QueuingSystemsUtils.absoluteBandWidth(0.332, 3600), 1195.2)
         })
     })
+
+    describe('calculateMeanTimeOfRequestInSystem(meanNumberOfRequestsInSystem, absoluteBandWidth)', function () {
+        it('should return 0.00377 when passed probabilityOfServiced=4.508, meanAdmissionRequestsInHour=1195.2', function () {
+            assert.strictEqual(QueuingSystemsUtils.calculateMeanTimeOfRequestInSystem(4.508, 1195.2), 0.00377)
+        })
+    })
 })
