@@ -61,16 +61,13 @@ class QueuingSystemsUtils {
         for (let i = 0; i <= channelSize; i++) {
             firstSummResult += Math.pow(loadIntencity, i) / MathUtils.factorial(i)
         }
-        console.log(firstSummResult)
 
         let secondSumMultiplayer = Math.pow(loadIntencity, channelSize)
-        console.log(secondSumMultiplayer)
 
         let secondSummResult = 0
         for (let i = 1; i <= bufferSize; i++) {
             secondSummResult += Math.pow((loadIntencity / channelSize), i)
         }
-        console.log(secondSummResult)
 
         let result = 1 / (firstSummResult + secondSumMultiplayer * secondSummResult)
         return CoreNumberUtils.toFixedFiveDigitsAfterComma(result)
