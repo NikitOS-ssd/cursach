@@ -62,7 +62,6 @@ class QueuingSystemsUtils {
     }
 
     static probabilityThatChannelIsFree(loadIntencity, channelSize, bufferSize) {
-
         let firstSummResult = 0
         for (let i = 0; i <= channelSize; i++) {
             firstSummResult += Math.pow(loadIntencity, i) / MathUtils.factorial(i)
@@ -83,10 +82,14 @@ class QueuingSystemsUtils {
     }
 
     static probabilityThatOneChannelIsWork(loadIntencity, probabilityThatChannelIsFree) {
-
         let result =
             (Math.pow(loadIntencity, 1) / CoreNumberUtils.toFixedFiveDigitsAfterComma(1)) * probabilityThatChannelIsFree
         return CoreNumberUtils.toFixedFiveDigitsAfterComma(result)
+    }
+
+    static calculateNumberOfRequestsInSystem(numberOfRequestsInQueue, numberOfRequestsInServed) {
+        const result = numberOfRequestsInQueue + numberOfRequestsInServed;
+        return result
     }
 }
 
