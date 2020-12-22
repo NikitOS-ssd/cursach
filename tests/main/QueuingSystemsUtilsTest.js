@@ -121,6 +121,18 @@ describe('QueuingSystemsUtils', function () {
         })
     })
 
+    describe('absoluteBandWidth(probabilityOfServiced, meanAdmissionRequestsInHour)', function () {
+        it('should return 1195.2 when passed probabilityOfServiced=0.332, meanAdmissionRequestsInHour=3600', function () {
+            assert.strictEqual(QueuingSystemsUtils.absoluteBandWidth(0.332, 3600), 1195.2)
+        })
+    })
+
+    describe('calculateMeanTimeOfRequestInSystem(meanNumberOfRequestsInSystem, absoluteBandWidth)', function () {
+        it('should return 0.00377 when passed probabilityOfServiced=4.508, meanAdmissionRequestsInHour=1195.2', function () {
+            assert.strictEqual(QueuingSystemsUtils.calculateMeanTimeOfRequestInSystem(4.508, 1195.2), 0.00377)
+        })
+    })
+
     describe('calculateMeanTimeOfRequestInQueue(meanRequestsInSystem, absoluteBandwidth, timeForProcessingOneRequest)', function () {
         it('should return 0.00294 when passed meanRequestsInSystem=4.508, absoluteBandwidth=1196.703, timeForProcessingOneRequest=0.00083', function () {
             assert.strictEqual(QueuingSystemsUtils.calculateMeanTimeOfRequestInQueue(4.508, 1196.703, 0.00083), 0.00294)
