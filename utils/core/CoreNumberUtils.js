@@ -18,7 +18,7 @@ class CoreNumberUtils {
      * @return {number} random number that   `>= startBarrier` and `<= endBarrier`
      */
     static generateRandomNumberBetween(startBarrier, endBarrier) {
-        let programProcessingTime = (startBarrier - endBarrier) * MathUtils.getRandomNumberFromZeroToOne() + endBarrier
+        let programProcessingTime = (startBarrier - endBarrier) * this.getRandomNumberFromZeroToOne() + endBarrier
         programProcessingTime = +programProcessingTime.toFixed(2)
         return programProcessingTime;
     }

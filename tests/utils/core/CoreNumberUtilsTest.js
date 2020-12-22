@@ -2,14 +2,14 @@ describe('CoreNumberUtils', function () {
 
     describe('toFixedFiveDigitsAfterComma(number)', function () {
         it('should return 0.00043 when passed 0.0004333333333333334', function () {
-            assert.strictEqual(MathUtils.toFixedFiveDigitsAfterComma(0.0004333333333333334), 0.00043)
+            assert.strictEqual(CoreNumberUtils.toFixedFiveDigitsAfterComma(0.0004333333333333334), 0.00043)
         })
     })
 
     describe('getRandomNumberFromZeroToOne()', function () {
         it('should return number between 0 and 1', function () {
             for (let i = 0; i < 1000; i++) {
-                let generatedNumber = MathUtils.getRandomNumberFromZeroToOne()
+                let generatedNumber = CoreNumberUtils.getRandomNumberFromZeroToOne()
                 assert.isTrue(generatedNumber >= 0 && generatedNumber <= 1)
             }
         })
@@ -21,7 +21,7 @@ describe('CoreNumberUtils', function () {
             let endBarrier = 100
 
             for (let i = 0; i < 1000; i++) {
-                let generatedNumber = MathUtils.generateRandomNumberBetween(startBarrier, endBarrier)
+                let generatedNumber = CoreNumberUtils.generateRandomNumberBetween(startBarrier, endBarrier)
                 assert.isTrue(generatedNumber >= startBarrier && generatedNumber <= endBarrier)
             }
         })
