@@ -81,9 +81,14 @@ class QueuingSystemsUtils {
         return CoreNumberUtils.toFixedFiveDigitsAfterComma(result)
     }
 
-    static calculateNumberOfRequestsInSystem(numberOfRequestsInQueue, numberOfRequestsInServed) {
+    static calculateMeanNumberOfRequestsInSystem(numberOfRequestsInQueue, numberOfRequestsInServed) {
         const result = numberOfRequestsInQueue + numberOfRequestsInServed;
-        return result
+        return CoreNumberUtils.toFixedFiveDigitsAfterComma(result);
+    }
+
+    static calculateMeanNumberOfRequestsInServed(loadIntencity, probabilityOfService) {
+        const result = loadIntencity * probabilityOfService;
+        return CoreNumberUtils.toFixedFiveDigitsAfterComma(result);
     }
 }
 
