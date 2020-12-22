@@ -63,13 +63,9 @@ describe('QueuingSystemsUtils', function () {
         })
     })
 
-    describe('probabilityOfReject(serviceFlowRate, amoundOfChannels, probabilityThatChannelIsFree)', function () {
-        it('should return 0.61536 when passed serviceFlowRate=4, amoundOfChannels=2, probabilityThatChannelIsFree=0.07692', function () {
-            assert.strictEqual(QueuingSystemsUtils.probabilityOfReject(4, 2, 0.07692), 0.61536)
-        })
-
-        it('should return 0.74771 when passed serviceFlowRate=2.96393, amoundOfChannels=1, probabilityThatChannelIsFree=0.25227', function () {
-            assert.strictEqual(QueuingSystemsUtils.probabilityOfReject(2.96393, 1, 0.25227), 0.74771)
+    describe('probabilityOfReject(loadIntensity, channelSize, bufferSize, probabilityThatChannelIsFree)', function () {
+        it('should return 0.66825 when passed loadIntensity=3, channelSize=1, bufferSize=4, probabilityThatChannelIsFree=0.00275', function () {
+            assert.strictEqual(QueuingSystemsUtils.probabilityOfReject(3, 1, 4, 0.00275), 0.66825)
         })
     })
 

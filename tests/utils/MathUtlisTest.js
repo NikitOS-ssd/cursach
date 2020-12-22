@@ -25,5 +25,4 @@ describe('MathUtils', function () {
             }, FactorialError, "number is less then 0")
         })
     })
-
 })

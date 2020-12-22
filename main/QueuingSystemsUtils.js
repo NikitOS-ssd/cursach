@@ -34,9 +34,11 @@ class QueuingSystemsUtils {
     /**
      * @return {number} probability from 0 to 1
      */
-    static probabilityOfReject(serviceFlowRate, amoundOfChannels, probabilityThatChannelIsFree) {
-        let firstMultiply = Math.pow(serviceFlowRate, amoundOfChannels) / MathUtils.factorial(amoundOfChannels)
-        let result = firstMultiply * probabilityThatChannelIsFree
+    static probabilityOfReject(loadIntensity, channelSize, bufferSize, probabilityThatChannelIsFree) {
+        let result = 0
+        let firstMultiplier = Math.pow(loadIntensity, channelSize + bufferSize)
+            / (Math.pow(channelSize, bufferSize) * MathUtils.factorial(channelSize))
+        result = firstMultiplier * probabilityThatChannelIsFree
         return CoreNumberUtils.toFixedFiveDigitsAfterComma(result)
     }
 
