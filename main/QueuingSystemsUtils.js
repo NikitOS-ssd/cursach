@@ -95,6 +95,11 @@ class QueuingSystemsUtils {
         const result = 1 - probabilityOfReject;
         return CoreNumberUtils.toFixedFiveDigitsAfterComma(result);
     }
+    
+    static absoluteBandWidth(probabilityOfServiced, meanAdmissionRequestsInHour) {
+        const result = probabilityOfServiced * meanAdmissionRequestsInHour;
+        return CoreNumberUtils.toFixedFiveDigitsAfterComma(result);
+    }
 }
 
 class CalculateMeanRequestHourError extends Error {

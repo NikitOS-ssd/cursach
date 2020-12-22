@@ -120,4 +120,10 @@ describe('QueuingSystemsUtils', function () {
             assert.strictEqual(QueuingSystemsUtils.probabilityOfServiced(0.668), 0.332)
         })
     })
+
+    describe('absoluteBandWidth(probabilityOfServiced, meanAdmissionRequestsInHour)', function () {
+        it('should return 1195.2 when passed probabilityOfServiced=0.332, meanAdmissionRequestsInHour=3600', function () {
+            assert.strictEqual(QueuingSystemsUtils.absoluteBandWidth(0.332, 3600), 1195.2)
+        })
+    })
 })
