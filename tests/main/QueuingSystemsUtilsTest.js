@@ -144,4 +144,14 @@ describe('QueuingSystemsUtils', function () {
             assert.strictEqual(QueuingSystemsUtils.calculateProbabilityOfLastP(4, 1, 3), 0.00826)
         })
     })
+
+    describe('calculateProbabilitiesOfPsFromOneForPreLast(bufferSize, amountOfChannels, lastP)', function () {
+        it('should return [0.66906, 0.22302, 0.07434, 0.02478, 0.00826] when passed bufferSize=4, amountOfChannels=1, loadIntensity=3', function () {
+            assert.deepEqual(QueuingSystemsUtils.calculateProbabilitiesOfPsFromOneForLast(
+                4,
+                1,
+                3
+            ), [0.66906, 0.22302, 0.07434, 0.02478, 0.00826])
+        })
+    })
 })

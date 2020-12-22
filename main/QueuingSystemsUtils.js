@@ -120,6 +120,28 @@ class QueuingSystemsUtils {
         result = 1 / denominator
         return CoreNumberUtils.toFixedFiveDigitsAfterComma(result)
     }
+
+    static calculateProbabilitiesOfPsFromOneForLast(bufferSize, amountOfChannels, loadIntensity) {
+        let result = []
+        let lastP = this.calculateProbabilityOfLastP(
+            bufferSize,
+            amountOfChannels,
+            loadIntensity
+        )
+        for (let i = 1; i <= bufferSize + amountOfChannels; i++) {
+            let firstMultiplier = Math.pow(loadIntensity, bufferSize + amountOfChannels - i)
+            let pFromI = firstMultiplier * lastP
+            result.push(CoreNumberUtils.toFixedFiveDigitsAfterComma(pFromI))
+        }
+        let sum = 0;
+        result.forEach((value, index, array) => {
+            sum += value
+        })
+
+        console.log(sum + 0.00275)
+
+        return result
+    }
 }
 
 class CalculateMeanRequestHourError extends Error {
