@@ -138,4 +138,10 @@ describe('QueuingSystemsUtils', function () {
             assert.strictEqual(QueuingSystemsUtils.calculateMeanTimeOfRequestInQueue(4.508, 1196.703, 0.00083), 0.00294)
         })
     })
+
+    describe('calculateMeanNumberOfRequestInQueue(loadIntencity, amountOfChannels, bufferSize, probabilityThatChannelIsFree)', function () {
+        it('should return 0.396 when passed loadIntencity=3, amountOfChannels=1, bufferSize=4, probabilityThatChannelIsFree=0.00275', function () {
+            assert.strictEqual(QueuingSystemsUtils.calculateMeanNumberOfRequestInQueue(3, 1, 4, 0.00275), 0.396)
+        })
+    })
 })
