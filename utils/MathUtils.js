@@ -34,7 +34,6 @@ class MathUtils {
         if (minTimeSec > maxTimeSec || hours === 0) throw new CalculateMeanRequestHourError
 
         const meanTimeInSec = (minTimeSec + maxTimeSec) / 2
-        const meanTimeInHours = this.secondsToHours(meanTimeInSec)
         return Math.floor(3600 * hours / meanTimeInSec)
     }
 
