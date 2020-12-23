@@ -39,12 +39,12 @@ describe('QueuingSystemsUtils', function () {
                 1
             ), 0.05)
         })
-        it('should return 0.00083 when passed minTimeSec= 1, maxTimeSec=5, hours=1', function () {
+        it('should return 0.0008333333333333334 when passed minTimeSec= 1, maxTimeSec=5, hours=1', function () {
             assert.strictEqual(QueuingSystemsUtils.calculateFrequencyRequestsProcessingInHour(
                 1,
                 5,
                 1
-            ), 0.00083)
+            ), 0.0008333333333333334)
         })
     })
 
@@ -82,8 +82,8 @@ describe('QueuingSystemsUtils', function () {
     })
 
     describe('probabilityThatChannelIsWork(probabilityThatChannelIsFree)', function () {
-        it('should return 0.2 when passed probabilityThatChannelIsFree=0.8', function () {
-            assert.strictEqual(QueuingSystemsUtils.probabilityThatChannelIsWork(0.8), 0.2)
+        it('should return 0.5 when passed probabilityThatChannelIsFree=0.5', function () {
+            assert.strictEqual(QueuingSystemsUtils.probabilityThatChannelIsWork(0.5), 0.5)
         })
 
         it('should return 0.74773 when passed probabilityThatChannelIsFree=0.25227', function () {
@@ -92,8 +92,8 @@ describe('QueuingSystemsUtils', function () {
     })
 
     describe('probabilityThatChannelIsFree(loadIntencity, channelSize, bufferSize)', function () {
-        it('should return 0.00275 when passed loadIntencity=3, channelSize=1, bufferSize=4', function () {
-            assert.strictEqual(QueuingSystemsUtils.probabilityThatChannelIsFree(3, 1, 4), 0.00275)
+        it('should return 0.0027472527472527475 when passed loadIntencity=3, channelSize=1, bufferSize=4', function () {
+            assert.strictEqual(QueuingSystemsUtils.probabilityThatChannelIsFree(3, 1, 4), 0.0027472527472527475)
         })
     })
 
@@ -116,8 +116,8 @@ describe('QueuingSystemsUtils', function () {
     })
 
     describe('probabilityOfServiced(probabilityOfReject)', function () {
-        it('should return 0.332 when passed probabilityOfReject=0.668', function () {
-            assert.strictEqual(QueuingSystemsUtils.probabilityOfServiced(0.668), 0.332)
+        it('should return 0.33199999999999996 when passed probabilityOfReject=0.668', function () {
+            assert.strictEqual(QueuingSystemsUtils.probabilityOfServiced(0.668), 0.33199999999999996)
         })
     })
 
@@ -128,14 +128,14 @@ describe('QueuingSystemsUtils', function () {
     })
 
     describe('calculateMeanTimeOfRequestInSystem(meanNumberOfRequestsInSystem, absoluteBandWidth)', function () {
-        it('should return 0.00377 when passed probabilityOfServiced=4.508, meanAdmissionRequestsInHour=1195.2', function () {
-            assert.strictEqual(QueuingSystemsUtils.calculateMeanTimeOfRequestInSystem(4.508, 1195.2), 0.00377)
+        it('should return 0.0037717536813922353 when passed probabilityOfServiced=4.508, meanAdmissionRequestsInHour=1195.2', function () {
+            assert.strictEqual(QueuingSystemsUtils.calculateMeanTimeOfRequestInSystem(4.508, 1195.2), 0.0037717536813922353)
         })
     })
 
     describe('calculateMeanTimeOfRequestInQueue(meanRequestsInSystem, absoluteBandwidth, timeForProcessingOneRequest)', function () {
-        it('should return 0.00294 when passed meanRequestsInSystem=4.508, absoluteBandwidth=1196.703, timeForProcessingOneRequest=0.00083', function () {
-            assert.strictEqual(QueuingSystemsUtils.calculateMeanTimeOfRequestInQueue(4.508, 1196.703, 0.00083), 0.00294)
+        it('should return 0.0029370165446230183 when passed meanRequestsInSystem=4.508, absoluteBandwidth=1196.703, timeForProcessingOneRequest=0.00083', function () {
+            assert.strictEqual(QueuingSystemsUtils.calculateMeanTimeOfRequestInQueue(4.508, 1196.703, 0.00083), 0.0029370165446230183)
         })
     })
 
@@ -146,8 +146,8 @@ describe('QueuingSystemsUtils', function () {
     })
 
     describe('calculateProbabilityOfLastP(bufferSize, amountOfChannels, loadIntensity)', function () {
-        it('should return 0.00826 when passed bufferSize=4, amountOfChannels=1, loadIntensity=3', function () {
-            assert.strictEqual(QueuingSystemsUtils.calculateProbabilityOfLastP(4, 1, 3), 0.00826)
+        it('should return 0.6675824175824175 when passed bufferSize=4, amountOfChannels=1, loadIntensity=3', function () {
+            assert.strictEqual(QueuingSystemsUtils.calculateProbabilityOfLastP(4, 1, 3), 0.6675824175824175)
         })
     })
 
@@ -157,7 +157,12 @@ describe('QueuingSystemsUtils', function () {
                 4,
                 1,
                 3
-            ), [0.66906, 0.22302, 0.07434, 0.02478, 0.00826])
+            ), [0.002747252747252746,
+                0.00824175824175824,
+                0.024725274725274717,
+                0.07417582417582416,
+                0.22252747252747251,
+                0.6675824175824175,])
         })
     })
 })

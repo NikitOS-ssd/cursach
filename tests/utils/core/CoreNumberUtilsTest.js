@@ -1,8 +1,8 @@
 describe('CoreNumberUtils', function () {
 
-    describe('toFixedFiveDigitsAfterComma(number)', function () {
-        it('should return 0.00043 when passed 0.0004333333333333334', function () {
-            assert.strictEqual(CoreNumberUtils.toFixedFiveDigitsAfterComma(0.0004333333333333334), 0.00043)
+    describe('toFixedDigitsAfterComma(number)', function () {
+        it('should return 0.0004333333333333334 when passed 0.0004333333333333334', function () {
+            assert.strictEqual(CoreNumberUtils.toFixedDigitsAfterComma(0.0004333333333333334), 0.0004333333333333334)
         })
     })
 

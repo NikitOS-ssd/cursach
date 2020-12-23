@@ -1,17 +1,17 @@
 class CoreNumberUtils {
 
     /**
-     * @return {number} return number with five digitalis after comma
+     * @return {number} return number with fixed digitalis after comma
      */
-    static toFixedFiveDigitsAfterComma(number) {
-        return parseFloat(parseFloat(number).toFixed(5))
+    static toFixedDigitsAfterComma(number) {
+        return number
     }
 
     /**
      * @return {number} number that  `>= 0` and `<= 1`
      */
     static getRandomNumberFromZeroToOne() {
-        return parseFloat(Math.random().toFixed(2))
+        return CoreNumberUtils.toFixedDigitsAfterComma(Math.random())
     }
 
     /**
@@ -19,7 +19,6 @@ class CoreNumberUtils {
      */
     static generateRandomNumberBetween(startBarrier, endBarrier) {
         let programProcessingTime = (startBarrier - endBarrier) * this.getRandomNumberFromZeroToOne() + endBarrier
-        programProcessingTime = +programProcessingTime.toFixed(2)
-        return programProcessingTime;
+        return CoreNumberUtils.toFixedDigitsAfterComma(programProcessingTime)
     }
 }

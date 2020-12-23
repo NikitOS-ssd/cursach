@@ -4,8 +4,8 @@ describe('TimeUtils', function () {
         it('should return 1 when passed 3600', function () {
             assert.strictEqual(TimeUtils.secondsToHours(3600), 1)
         })
-        it('should return 0.00028 when passed 1', function () {
-            assert.strictEqual(TimeUtils.secondsToHours(1), 0.00028)
+        it('should return 0.0002777777777777778 when passed 1', function () {
+            assert.strictEqual(TimeUtils.secondsToHours(1), 0.0002777777777777778)
         })
     })
 
