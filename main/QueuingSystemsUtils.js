@@ -132,21 +132,15 @@ class QueuingSystemsUtils {
             amountOfChannels,
             loadIntensity
         )
-        console.log(lastP)
-
         for (let i = 0; i <= bufferSize + amountOfChannels; i++) {
             let firstMultiplier = Math.pow(revertedLoadIntensity, bufferSize + amountOfChannels - i)
             let pFromI = firstMultiplier * lastP
             result.push(CoreNumberUtils.toFixedDigitsAfterComma(pFromI))
         }
-        console.log(result)
-
         let tempResult = 0;
         result.forEach((value => {
             tempResult += value
         }))
-        console.log(tempResult)
-
         return result
     }
 
