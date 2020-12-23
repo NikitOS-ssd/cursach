@@ -137,7 +137,7 @@ class QueuingSystemsUtils {
     }
 
     static calculateMeanNumberOfRequestInQueue(loadIntencity, amountOfChannels, bufferSize, probabilityThatChannelIsFree) {
-        const allAddictionInNumerator = Math.pow(loadIntencity, amountOfChannels+1) * 1 - Math.pow(loadIntencity/amountOfChannels, bufferSize) * (bufferSize+1-bufferSize*loadIntencity/amountOfChannels);
+        const allAddictionInNumerator = Math.pow(loadIntencity, amountOfChannels+1) * (1 - Math.pow(loadIntencity/amountOfChannels, bufferSize) * (bufferSize+1-bufferSize*loadIntencity/amountOfChannels));
         const allAddictionInDominator = MathUtils.factorial(amountOfChannels*amountOfChannels) * Math.pow((1-(loadIntencity/amountOfChannels)), 2);
 
         const result = allAddictionInNumerator / allAddictionInDominator * probabilityThatChannelIsFree;

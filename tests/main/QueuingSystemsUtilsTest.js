@@ -140,8 +140,8 @@ describe('QueuingSystemsUtils', function () {
     })
 
     describe('calculateMeanNumberOfRequestInQueue(loadIntencity, amountOfChannels, bufferSize, probabilityThatChannelIsFree)', function () {
-        it('should return 0.396 when passed loadIntencity=3, amountOfChannels=1, bufferSize=4, probabilityThatChannelIsFree=0.00275', function () {
-            assert.strictEqual(QueuingSystemsUtils.calculateMeanNumberOfRequestInQueue(3, 1, 4, 0.00275), 0.396)
+        it('should return 3.5145 when passed loadIntencity=3, amountOfChannels=1, bufferSize=4, probabilityThatChannelIsFree=0.00275', function () {
+            assert.strictEqual(QueuingSystemsUtils.calculateMeanNumberOfRequestInQueue(3, 1, 4, 0.00275), 3.5145)
         })
     })
 
